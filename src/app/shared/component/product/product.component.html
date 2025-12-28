@@ -1,0 +1,67 @@
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-6">
+        <div class="page-wrapper">
+
+  
+  <div class="card glass-card d-flex justify-content-center">
+    <h3>Product Name</h3>
+    <input
+      type="text"
+      [(ngModel)]="productName"
+      placeholder="Lenovo Thinkpad"
+    />
+
+    <h3 class="mt">Product Description</h3>
+    <textarea
+      rows="3"
+      [(ngModel)]="productDesc"
+      placeholder="Product description..."
+    ></textarea>
+
+    <button class="btn add-btn" (click)="addProduct()">Add Product</button>
+  </div>
+
+  <!-- PRODUCT LIST -->
+  <div
+    class="card product-card"
+    *ngFor="let p of products"
+  >
+    <h2>{{ p.name }}</h2>
+    <p>
+      {{ p.description }} and its status is
+      <b>{{ p.status }}</b>
+    </p>
+
+    <div class="status-btns">
+      <button
+        class="status inprogress"
+        [class.active]="isActive(p,'In Progress')"
+        (click)="changeStatus(p,'In Progress')"
+      >
+        In Progress
+      </button>
+
+      <button
+        class="status dispatched"
+        [class.active]="isActive(p,'Dispatched')"
+        (click)="changeStatus(p,'Dispatched')"
+      >
+        Dispatched
+      </button>
+
+      <button
+        class="status delivered"
+        [class.active]="isActive(p,'Delivered')"
+        (click)="changeStatus(p,'Delivered')"
+      >
+        Delivered
+      </button>
+    </div>
+  </div>
+
+</div>
+
+    </div>
+</div>
